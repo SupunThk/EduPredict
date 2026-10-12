@@ -111,15 +111,15 @@ main { max-width: 1180px; margin-inline: auto; }
 .scale .dots { display: flex; gap: 8px; }
 .scale label { position: relative; cursor: pointer; }
 .scale input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.scale span {
+.scale .dots span {
   display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid var(--rule); background: var(--sheet); font: 500 0.85rem/1 var(--mono);
   transition: border-color .15s, background .15s, color .15s;
 }
-.scale label:hover span { border-color: var(--muted); }
-.scale input:checked + span { border-color: var(--biro); background: var(--biro); color: var(--sheet); }
-.scale .ends { display: flex; justify-content: space-between; width: calc(5 * 34px + 4 * 8px);
-  font: 400 0.72rem/1.2 var(--mono); color: var(--muted); }
+.scale .dots label:hover span { border-color: var(--muted); }
+.scale .dots input:checked + span { border-color: var(--biro); background: var(--biro); color: var(--sheet); }
+.scale .ends { display: flex; justify-content: space-between; gap: 12px; width: calc(5 * 34px + 4 * 8px); }
+.scale .ends span { font: 400 0.72rem/1.2 var(--mono); color: var(--muted); white-space: nowrap; }
 
 /* stepper for whole numbers */
 .stepper { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); }
