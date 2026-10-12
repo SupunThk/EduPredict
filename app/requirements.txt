@@ -1,0 +1,7 @@
+# Python 3.11. Versions match the ones the saved models were fitted with.
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+scikit-learn==1.9.0
+joblib==1.5.3
+streamlit==1.65.0
