@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EduPredict Grade Check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">20</span>
+      <span class="name">EduPredict</span>
+    </div>
+    <nav class="views" role="tablist" aria-label="Views">
+      <button role="tab" id="tab-student" aria-controls="view-student" aria-selected="true">Student</button>
+      <button role="tab" id="tab-class" aria-controls="view-class" aria-selected="false">Class list</button>
+      <button role="tab" id="tab-models" aria-controls="view-models" aria-selected="false">Models</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Single student: form on the left, live result sheet on the right -->
+    <section id="view-student" role="tabpanel" aria-labelledby="tab-student" class="student">
+      <div class="intro">
+        <h1>Final Maths grade, estimated.</h1>
+        <p>Describe a student and the selected model estimates their final grade on the 0–20 scale.
+          Below 10 is marked for a supportive review by staff, never for an automatic decision.</p>
+      </div>
+
+      <form id="form" class="form" autocomplete="off" novalidate></form>
+
+      <aside class="sheet" aria-live="polite">
+        <div class="knows" role="radiogroup" aria-label="Which grades are known">
+          <span class="eyebrow">What do you know?</span>
+          <div class="seg">
+            <label><input type="radio" name="stage" id="stage-early" value="early" checked><span>No period grades yet</span></label>
+            <label><input type="radio" name="stage" id="stage-later" value="later"><span>G1 and G2 known</span></label>
+          </div>
+        </div>
+
+        <div class="readout">
+          <span class="eyebrow">Predicted final grade · G3</span>
+          <div class="grade"><span id="grade">–</span><span class="of">/ 20</span></div>
+          <span id="status" class="chip">Waiting</span>
+        </div>
+
+        <svg id="ruler" class="ruler" viewBox="0 0 400 78" role="img" aria-label="Grade scale from 0 to 20">
+          <rect class="below" x="20" y="18" width="180" height="22"></rect>
+          <g id="band"><rect class="band" x="0" y="18" width="0" height="22"></rect></g>
+          <g id="ticks"></g>
+          <line class="pass" x1="200" x2="200" y1="10" y2="48"></line>
+          <text class="pass-label" x="200" y="7">10</text>
+          <g id="marker" class="marker"><line x1="0" x2="0" y1="12" y2="46"></line><circle cx="0" cy="29" r="5"></circle></g>
+        </svg>
+        <p class="legend"><span class="key key-band"></span><span id="band-text">Typical error</span></p>
+
+        <p id="advice" class="advice"></p>
+        <dl class="facts">
+          <div><dt>Model</dt><dd id="model-name">–</dd></div>
+          <div><dt>Below-10 test students found</dt><dd id="model-recall">–</dd></div>
+          <div><dt>Extra flags on the test set</dt><dd id="model-extra">–</dd></div>
+        </dl>
+        <p id="warn" class="warn" hidden></p>
+      </aside>
+
+      <div class="mini" aria-hidden="true"><span id="mini-grade">–</span><span id="mini-status"></span></div>
+    </section>
+
+    <!-- Class list: CSV in, predictions out -->
+    <section id="view-class" role="tabpanel" aria-labelledby="tab-class" class="panel" hidden>
+      <div class="intro">
+        <h1>A whole class at once.</h1>
+        <p>Upload a CSV with one student per row, using the same column names as the dataset. Rows with both G1 and G2
+          use the later-stage model; the others use the main model.</p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn ghost" id="template">Download template</button>
+        <label class="btn solid" for="csv">Choose CSV file</label>
+        <input type="file" id="csv" accept=".csv,text/csv" class="visually-hidden">
+      </div>
+      <p id="class-summary" class="summary">No file yet. Try the template with a few fictional students.</p>
+      <div class="table-wrap"><table id="class-table" class="table" hidden>
+        <thead><tr><th>Row</th><th>Model</th><th class="num">Predicted G3</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <button type="button" class="btn ghost" id="download" hidden>Download predictions</button>
+    </section>
+
+    <!-- Models: what was selected and how well it did -->
+    <section id="view-models" role="tabpanel" aria-labelledby="tab-models" class="panel" hidden>
+      <div class="intro">
+        <h1>Two models, one rule.</h1>
+        <p>Notebook 03 compared Linear Regression, Ridge, Decision Tree, Random Forest and Gradient Boosting on the same
+          316 training students with five-fold cross-validation, and kept the lowest mean absolute error in each scenario.
+          Random Forest won both. The app switches between them only by what you know about the student.</p>
+      </div>
+      <div class="table-wrap"><table id="models-table" class="table compare"></table></div>
+      <p class="note">Test figures are recomputed from the saved models on the same 79 held-out students each time the app
+        starts, and match Notebook 04. That test set has already been inspected, so it is not used for further tuning.</p>
+      <h2>Keep in mind</h2>
+      <ul class="limits">
+        <li>The main model misses 17 of the 27 test students who scored below 10. An unflagged student can still need help.</li>
+        <li>At the later stage, reusing G2 as the prediction has a lower error (1.000) than the forest.</li>
+        <li>The data come from two Portuguese schools, so results may not transfer elsewhere.</li>
+        <li>The causes of the 38 recorded zero grades are unknown, and the meaning of the top failures code is unconfirmed.</li>
+        <li>Predictions describe associations. They do not show what an intervention would change.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">Use fictional or de-identified students only. Nothing you enter is stored.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

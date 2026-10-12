@@ -1,6 +1,8 @@
 # EduPredict local prediction app
 
-A small Streamlit app that loads the two selected Random Forest pipelines from `models/` and predicts a student's final Mathematics grade (G3, 0–20). It does not train, tune or save anything, and it changes no notebook, model or `src/` file.
+A small local web app that loads the two selected Random Forest pipelines from `models/` and estimates a student's final Mathematics grade (G3, 0–20). It does not train, tune or save anything, and it changes no notebook, model or `src/` file.
+
+The page is plain HTML, CSS and JavaScript in `app/static/`, served by Python's built-in web server (`app/server.py`). No web framework is needed.
 
 ## Run it
 
@@ -10,10 +12,12 @@ Use Python 3.11. The pinned versions match the versions the saved models were fi
 python3.11 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r app/requirements.txt
-streamlit run app/app.py --server.address localhost
+python app/server.py
 ```
 
-The app opens at http://localhost:8501. To check that it reproduces the project's results:
+A browser tab opens at http://127.0.0.1:8000. The server listens only on this computer. Use `--port 8080` to change the port or `--no-browser` to skip opening a tab. Stop it with Ctrl+C.
+
+To check that the app reproduces the project's results:
 
 ```bash
 python -m unittest discover -s app
@@ -21,9 +25,9 @@ python -m unittest discover -s app
 
 ## What it does
 
-- **Single student:** enter the raw details in a form and get the predicted G3 and the *potentially at risk* flag (predicted G3 < 10).
-- **Batch (CSV):** upload many students at once (comma or semicolon separated, same column names as `data/student-mat.csv`) and download the predictions. Use the template button for the column layout.
-- **About the models:** shows the selection rule, training-CV MAE and held-out test metrics, plus the limitations from the reports.
+- **Student:** describe a student with buttons and steppers. The estimate updates as you change inputs and is drawn on a 0–20 grade ruler, with 10 marked and the model's average test error shaded around the estimate. Below 10 shows as *potentially at risk*.
+- **Class list:** upload a CSV (comma or semicolon separated, same column names as `data/student-mat.csv`) and download the predictions. The template button gives the column layout with two example rows.
+- **Models:** the selection rule, training-CV MAE, held-out test metrics and the limitations from the reports.
 
 ## Which model is used
 
