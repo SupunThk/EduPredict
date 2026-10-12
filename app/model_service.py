@@ -38,42 +38,41 @@ SCENARIO_LABELS = {
 # Input fields: (name, label, group, options or (low, high), default).
 # Options map the stored code to a readable label.
 YES_NO = {"yes": "Yes", "no": "No"}
-JOBS = {"teacher": "Teacher", "health": "Health care", "services": "Civil services",
+JOBS = {"teacher": "Teacher", "health": "Health", "services": "Services",
         "at_home": "At home", "other": "Other"}
-EDUCATION = {0: "0 – None", 1: "1 – Primary (grade 4)", 2: "2 – Grades 5–9",
-             3: "3 – Secondary", 4: "4 – Higher education"}
-LOW_HIGH = {1: "1 – Very low", 2: "2 – Low", 3: "3 – Medium", 4: "4 – High", 5: "5 – Very high"}
-BAD_GOOD = {1: "1 – Very bad", 2: "2 – Bad", 3: "3 – Fair", 4: "4 – Good", 5: "5 – Very good"}
+EDUCATION = {0: "None", 1: "Primary", 2: "Grades 5–9", 3: "Secondary", 4: "Higher"}
+LOW_HIGH = {1: "Very low", 2: "Low", 3: "Medium", 4: "High", 5: "Very high"}
+BAD_GOOD = {1: "Very bad", 2: "Bad", 3: "Fair", 4: "Good", 5: "Very good"}
 
 FIELDS = [
-    ("school", "School", "Student and family", {"GP": "Gabriel Pereira (GP)", "MS": "Mousinho da Silveira (MS)"}, "GP"),
+    ("school", "School", "Student and family", {"GP": "Gabriel Pereira", "MS": "Mousinho da Silveira"}, "GP"),
     ("sex", "Sex", "Student and family", {"F": "Female", "M": "Male"}, "F"),
     ("age", "Age (years)", "Student and family", (15, 22), 17),
     ("address", "Home area", "Student and family", {"U": "Urban", "R": "Rural"}, "U"),
-    ("famsize", "Family size", "Student and family", {"LE3": "3 or fewer", "GT3": "More than 3"}, "GT3"),
-    ("Pstatus", "Parents' cohabitation", "Student and family", {"T": "Living together", "A": "Living apart"}, "T"),
+    ("famsize", "Family size", "Student and family", {"LE3": "3 or fewer", "GT3": "4 or more"}, "GT3"),
+    ("Pstatus", "Parents' cohabitation", "Student and family", {"T": "Together", "A": "Apart"}, "T"),
     ("Medu", "Mother's education", "Student and family", EDUCATION, 3),
     ("Fedu", "Father's education", "Student and family", EDUCATION, 3),
     ("Mjob", "Mother's job", "Student and family", JOBS, "services"),
     ("Fjob", "Father's job", "Student and family", JOBS, "other"),
     ("reason", "Reason for choosing school", "Student and family",
-     {"home": "Close to home", "reputation": "School reputation", "course": "Course preference", "other": "Other"}, "course"),
+     {"home": "Near home", "reputation": "Reputation", "course": "Courses", "other": "Other"}, "course"),
     ("guardian", "Guardian", "Student and family", {"mother": "Mother", "father": "Father", "other": "Other"}, "mother"),
     ("traveltime", "Home-to-school travel time", "Study and support",
-     {1: "1 – Under 15 min", 2: "2 – 15 to 30 min", 3: "3 – 30 to 60 min", 4: "4 – Over 1 hour"}, 1),
+     {1: "< 15 min", 2: "15–30 min", 3: "30–60 min", 4: "> 1 hour"}, 1),
     ("studytime", "Weekly study time", "Study and support",
-     {1: "1 – Under 2 hours", 2: "2 – 2 to 5 hours", 3: "3 – 5 to 10 hours", 4: "4 – Over 10 hours"}, 2),
-    ("failures", "Past class failures (dataset code)", "Study and support", (0, 3), 0),
+     {1: "< 2 h", 2: "2–5 h", 3: "5–10 h", 4: "> 10 h"}, 2),
+    ("failures", "Past class failures", "Study and support", (0, 3), 0),
     ("schoolsup", "Extra school support", "Study and support", YES_NO, "no"),
     ("famsup", "Family educational support", "Study and support", YES_NO, "yes"),
-    ("paid", "Extra paid classes (Maths)", "Study and support", YES_NO, "no"),
+    ("paid", "Paid Maths classes", "Study and support", YES_NO, "no"),
     ("activities", "Extracurricular activities", "Study and support", YES_NO, "yes"),
     ("nursery", "Attended nursery school", "Study and support", YES_NO, "yes"),
     ("higher", "Wants higher education", "Study and support", YES_NO, "yes"),
     ("internet", "Internet access at home", "Study and support", YES_NO, "yes"),
     ("romantic", "In a romantic relationship", "Study and support", YES_NO, "no"),
     ("famrel", "Family relationship quality", "Lifestyle and attendance",
-     {1: "1 – Very bad", 2: "2 – Bad", 3: "3 – Fair", 4: "4 – Good", 5: "5 – Excellent"}, 4),
+     {1: "Very bad", 2: "Bad", 3: "Fair", 4: "Good", 5: "Excellent"}, 4),
     ("freetime", "Free time after school", "Lifestyle and attendance", LOW_HIGH, 3),
     ("goout", "Going out with friends", "Lifestyle and attendance", LOW_HIGH, 3),
     ("Dalc", "Workday alcohol use", "Lifestyle and attendance", LOW_HIGH, 1),
