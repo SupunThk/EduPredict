@@ -1,0 +1,3 @@
+
+# Editable DOCX sources stay local; only PDFs are committed under docs/
+docs/**/*.docx
