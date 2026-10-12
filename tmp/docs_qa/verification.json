@@ -1,0 +1,42 @@
+[
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Business Problem.docx",
+    "sha256": "cd66aeafbb9adc086fa402cabddcf4fdba113f59574de3cfd557ea5a841c197c",
+    "title": "Student Performance Business Problem",
+    "tables": 2,
+    "images": 0,
+    "structural_checks": "passed",
+    "page_layout_verified": false,
+    "render_failure": "LibreOffice soffice.exe is unavailable"
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Decision Log.docx",
+    "sha256": "7e614319f529f7a54ca0f60e0a0da5cde74e947e7d62ed23268b3b02c305e985",
+    "title": "Student Performance Decision Log",
+    "tables": 0,
+    "images": 0,
+    "structural_checks": "passed",
+    "page_layout_verified": false,
+    "render_failure": "LibreOffice soffice.exe is unavailable"
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Student_Performance_Data_Dictionary.docx",
+    "sha256": "fe017925a9fc39688ef3ebb4bb9d4b792092a9f364dde884cccb97903beda07a",
+    "title": "Student Performance Data Dictionary",
+    "tables": 4,
+    "images": 0,
+    "structural_checks": "passed",
+    "page_layout_verified": false,
+    "render_failure": "LibreOffice soffice.exe is unavailable"
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Workflow diagram.docx",
+    "sha256": "4fa10bb509e618b08d532e125cab0dfd3d2628b39730b0793633e31d916d0642",
+    "title": "Student Performance Project Workflow",
+    "tables": 1,
+    "images": 1,
+    "structural_checks": "passed",
+    "page_layout_verified": false,
+    "render_failure": "LibreOffice soffice.exe is unavailable"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Member_1_Personal_Learning_Journey.docx",
+    "words": 411,
+    "page_size": "A4",
+    "structural_checks": "passed",
+    "page_layout_verified": false
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Member_2_Personal_Learning_Journey.docx",
+    "words": 401,
+    "page_size": "A4",
+    "structural_checks": "passed",
+    "page_layout_verified": false
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Member_3_Personal_Learning_Journey.docx",
+    "words": 423,
+    "page_size": "A4",
+    "structural_checks": "passed",
+    "page_layout_verified": false
+  },
+  {
+    "file": "C:\\Projects\\EduPredict\\docs\\Member_4_Personal_Learning_Journey.docx",
+    "words": 427,
+    "page_size": "A4",
+    "structural_checks": "passed",
+    "page_layout_verified": false
+  }
+]

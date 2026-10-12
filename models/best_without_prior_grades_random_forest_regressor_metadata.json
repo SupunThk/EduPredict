@@ -1,9 +1,8 @@
 {
+  "model": "Random Forest",
+  "scenario": "no_prior_grades",
   "students": 395,
   "zero_grades": 38,
-  "below_10": 130,
-  "training_students": 316,
-  "test_students": 79,
   "training_indices": [
     181,
     194,
@@ -403,94 +402,64 @@
     3,
     18
   ],
-  "initial_comparison": {
-    "Mean baseline": {
-      "MAE": 3.4028651224982744,
-      "RMSE": 4.563457898973525,
-      "R2": -0.03502320134255514
-    },
-    "Linear Regression": {
-      "MAE": 3.522676718762831,
-      "RMSE": 4.607035358217456,
-      "R2": -0.09238794106516227
-    },
-    "Ridge": {
-      "MAE": 3.4903912677131084,
-      "RMSE": 4.5621380223904655,
-      "R2": -0.06935180923374507
-    },
-    "Decision Tree": {
-      "MAE": 3.1303863771924734,
-      "RMSE": 4.1761751296282315,
-      "R2": 0.1032666311426758
-    },
-    "Random Forest": {
-      "MAE": 3.0015243789989254,
-      "RMSE": 3.952506757529998,
-      "R2": 0.20509387226402725
-    },
-    "Gradient Boosting": {
-      "MAE": 3.046054757691987,
-      "RMSE": 3.945861050882827,
-      "R2": 0.2101737605267134
-    }
-  },
-  "tuned_comparison": {
-    "Random Forest": {
-      "MAE": 2.9640541013939945,
-      "RMSE": 3.9366343235796917,
-      "R2": 0.20805713748052615
-    },
-    "Gradient Boosting": {
-      "MAE": 3.046962353145367,
-      "RMSE": 3.9436640551172792,
-      "R2": 0.21008248290992504
-    },
-    "Ridge": {
-      "MAE": 3.242256421889065,
-      "RMSE": 4.167684696362501,
-      "R2": 0.1252527029901645
-    }
-  },
-  "selected_model": "Random Forest",
-  "selected_settings": {
-    "Ridge": {
-      "model_parameters": {
-        "model__alpha": 100
-      },
-      "log_absences": true
-    },
-    "Random Forest": {
-      "model_parameters": {
-        "model__max_depth": null,
-        "model__max_features": 0.8,
-        "model__min_samples_leaf": 2
-      },
-      "log_absences": false
-    },
-    "Gradient Boosting": {
-      "model_parameters": {
-        "model__learning_rate": 0.03,
-        "model__max_depth": 2,
-        "model__min_samples_leaf": 5,
-        "model__n_estimators": 200
-      },
-      "log_absences": false
-    }
-  },
-  "scope": "All recorded Mathematics students, including zero final grades",
-  "split_random_state": 42,
-  "test_size": 0.2,
-  "cv": "5-fold shuffled KFold, random_state=42",
+  "input_features": [
+    "school",
+    "sex",
+    "age",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Medu",
+    "Fedu",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "traveltime",
+    "studytime",
+    "failures",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences"
+  ],
+  "include_prior_grades": false,
   "selection_metric": "MAE",
-  "test_performance_evaluated": false,
+  "selection_cv_scores": {
+    "MAE": 2.9640541013939945,
+    "RMSE": 3.9366343235796917,
+    "R2": 0.20805713748052615
+  },
+  "selection_cv_std": {
+    "MAE": 0.3456239935084914,
+    "RMSE": 0.32040972689565533,
+    "R2": 0.15384133360891347
+  },
+  "pipeline_path": "models/best_without_prior_grades_random_forest_regressor.joblib",
+  "pipeline_sha256": "71c78281c0f72a459e61348fcc2e597f0afe9e26f5103eced2700cdf95e54218",
   "dataset_sha256": "e47f9ee225e1ee6e69b7564e6dac7123e80b8486677fe111f351964cef5dec80",
-  "preprocessing_sha256": "ad5fe54e1ea1e7cdb92a4fcb4e00553014bede964d9acb34a3c1065944b8bcbc",
+  "preprocessing_sha256": "309a02c3916fea3ab07ab0f2c9d991e10bd81614a60062c603b6c6c7af6a5040",
+  "log_absences": false,
   "versions": {
     "python": "3.11.15",
     "numpy": "2.4.6",
     "pandas": "3.0.3",
+    "scipy": "1.17.1",
     "scikit-learn": "1.9.0",
     "joblib": "1.5.3"
-  }
+  },
+  "split_random_state": 42,
+  "test_size": 0.2,
+  "test_set_already_inspected": true
 }

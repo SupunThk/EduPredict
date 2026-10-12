@@ -1,3 +1,0 @@
-Scenario,Mean residual,Median absolute error,90th percentile absolute error,Maximum absolute error,Within 2 grade points (%),"Predictions outside [0, 20]"
-Main: without G1/G2,-0.13316739273384876,2.4143029100529088,6.136139153439162,11.147705026455027,37.9746835443038,0
-Later stage: with G1/G2,0.021789594254784307,0.6927275132275064,2.1441010582010613,7.620752645502648,88.60759493670885,0

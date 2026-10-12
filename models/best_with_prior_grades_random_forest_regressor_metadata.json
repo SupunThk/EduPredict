@@ -1,9 +1,8 @@
 {
-  "scope": "All recorded Mathematics students, including zero final grades; no prior grades in the main scenario",
+  "model": "Random Forest",
+  "scenario": "with_prior_grades",
   "students": 395,
   "zero_grades": 38,
-  "training_students": 316,
-  "test_students": 79,
   "training_indices": [
     181,
     194,
@@ -403,12 +402,57 @@
     3,
     18
   ],
-  "split_random_state": 42,
-  "test_size": 0.2,
-  "cv": "5-fold shuffled KFold, random_state=42",
+  "input_features": [
+    "school",
+    "sex",
+    "age",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Medu",
+    "Fedu",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "traveltime",
+    "studytime",
+    "failures",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "include_prior_grades": true,
   "selection_metric": "MAE",
+  "selection_cv_scores": {
+    "MAE": 0.9381277479717335,
+    "RMSE": 1.4757046027645657,
+    "R2": 0.8927698607422355
+  },
+  "selection_cv_std": {
+    "MAE": 0.20559902761487733,
+    "RMSE": 0.4797017256478806,
+    "R2": 0.03686270055530527
+  },
+  "pipeline_path": "models/best_with_prior_grades_random_forest_regressor.joblib",
+  "pipeline_sha256": "a41905cc0831c753bf86856405b34c01f7a4afc24e7ec88f868239f30a6e68e0",
   "dataset_sha256": "e47f9ee225e1ee6e69b7564e6dac7123e80b8486677fe111f351964cef5dec80",
   "preprocessing_sha256": "309a02c3916fea3ab07ab0f2c9d991e10bd81614a60062c603b6c6c7af6a5040",
+  "log_absences": true,
   "versions": {
     "python": "3.11.15",
     "numpy": "2.4.6",
@@ -417,97 +461,7 @@
     "scikit-learn": "1.9.0",
     "joblib": "1.5.3"
   },
-  "initial_comparison": {
-    "Linear Regression": {
-      "MAE": 3.522676718762832,
-      "RMSE": 4.607035358217456,
-      "R2": -0.09238794106516199
-    },
-    "Ridge Regression": {
-      "MAE": 3.4903912677131084,
-      "RMSE": 4.5621380223904655,
-      "R2": -0.06935180923374507
-    },
-    "Decision Tree": {
-      "MAE": 3.1303863771924734,
-      "RMSE": 4.1761751296282315,
-      "R2": 0.1032666311426758
-    },
-    "Random Forest": {
-      "MAE": 3.0015243789989254,
-      "RMSE": 3.952506757529998,
-      "R2": 0.20509387226402725
-    },
-    "Gradient Boosting": {
-      "MAE": 3.046054757691987,
-      "RMSE": 3.945861050882827,
-      "R2": 0.2101737605267134
-    }
-  },
-  "tuned_comparison": {
-    "Linear Regression": {
-      "MAE": 3.4763325788813226,
-      "RMSE": 4.461546108813289,
-      "R2": -0.030798858200714728
-    },
-    "Ridge Regression": {
-      "MAE": 3.242256421889065,
-      "RMSE": 4.167684696362501,
-      "R2": 0.1252527029901645
-    },
-    "Decision Tree": {
-      "MAE": 3.079131596360061,
-      "RMSE": 4.063580377383662,
-      "R2": 0.1549116080183158
-    },
-    "Random Forest": {
-      "MAE": 2.9640541013939945,
-      "RMSE": 3.9366343235796917,
-      "R2": 0.20805713748052615
-    },
-    "Gradient Boosting": {
-      "MAE": 3.046054757691987,
-      "RMSE": 3.945861050882827,
-      "R2": 0.2101737605267134
-    }
-  },
-  "selected_model": "Random Forest",
-  "selected_settings": {
-    "Linear Regression": {
-      "model_parameters": {},
-      "log_absences": true
-    },
-    "Ridge Regression": {
-      "model_parameters": {
-        "model__alpha": 100
-      },
-      "log_absences": true
-    },
-    "Decision Tree": {
-      "model_parameters": {
-        "model__max_depth": 2,
-        "model__min_samples_leaf": 2
-      },
-      "log_absences": false
-    },
-    "Random Forest": {
-      "model_parameters": {
-        "model__max_depth": null,
-        "model__max_features": 0.8,
-        "model__min_samples_leaf": 2
-      },
-      "log_absences": false
-    },
-    "Gradient Boosting": {
-      "model_parameters": {
-        "model__learning_rate": 0.05,
-        "model__max_depth": 2,
-        "model__min_samples_leaf": 5,
-        "model__n_estimators": 100
-      },
-      "log_absences": false
-    }
-  },
-  "later_stage_selected_model": "Random Forest",
-  "test_performance_evaluated": false
+  "split_random_state": 42,
+  "test_size": 0.2,
+  "test_set_already_inspected": true
 }
