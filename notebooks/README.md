@@ -5,6 +5,7 @@
 3. Run the five model notebooks in any order: `03a_linear_regression.ipynb`, `03b_ridge_regression.ipynb`, `03c_decision_tree.ipynb`, `03d_random_forest.ipynb`, and `03e_gradient_boosting.ipynb`.
 4. `03_regression_modelling.ipynb`: compare the saved configurations on training CV and prepare the selected pipelines for evaluation.
 5. `04_evaluation_recommendations.ipynb`: inspect final test metrics, residuals, risk errors and recommendations.
+6. `05_student_prediction.ipynb`: enter a student's raw details and predict G3 using the saved selected Random Forest model. Choose without G1/G2 or, when both grades are known, with G1/G2. No retraining is needed.
 
 Each model notebook has five sections: setup, constant baselines, without G1/G2, with G1/G2, and a scenario summary with fitted-model saving. Each scenario shows the initial model, tuning and interpretation. Settings and fitting stay visible; repeated metric helpers live in `src/model_utils.py`, and preprocessing lives in `src/preprocessing.py`.
 
